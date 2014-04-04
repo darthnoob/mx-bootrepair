@@ -4,7 +4,7 @@
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="30"/>
+        <location filename="../main.cpp" line="54"/>
         <source>You must run this program as root.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="14"/>
-        <location filename="../mxbootrepair.cpp" line="161"/>
+        <location filename="../mxbootrepair.cpp" line="188"/>
         <source>MX Boot Repair</source>
         <translation type="unfinished"></translation>
     </message>
@@ -54,7 +54,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="170"/>
-        <location filename="../mxbootrepair.ui" line="320"/>
+        <location filename="../mxbootrepair.ui" line="317"/>
         <source>Alt+B</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,97 +69,92 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="247"/>
-        <source>The GRUB configuration file (grub.cfg) is being rebuild.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="310"/>
+        <location filename="../mxbootrepair.ui" line="307"/>
         <source>About this application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="313"/>
+        <location filename="../mxbootrepair.ui" line="310"/>
         <source>About...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="362"/>
+        <location filename="../mxbootrepair.ui" line="359"/>
         <source>Display help </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="365"/>
+        <location filename="../mxbootrepair.ui" line="362"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="372"/>
+        <location filename="../mxbootrepair.ui" line="369"/>
         <source>Alt+H</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="385"/>
+        <location filename="../mxbootrepair.ui" line="382"/>
         <source>Apply any changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="388"/>
+        <location filename="../mxbootrepair.ui" line="385"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="408"/>
+        <location filename="../mxbootrepair.ui" line="405"/>
         <source>Cancel any changes then quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="411"/>
+        <location filename="../mxbootrepair.ui" line="408"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="418"/>
+        <location filename="../mxbootrepair.ui" line="415"/>
         <source>Alt+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="101"/>
+        <location filename="../mxbootrepair.cpp" line="105"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="102"/>
+        <location filename="../mxbootrepair.cpp" line="106"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
+        <location filename="../mxbootrepair.cpp" line="114"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="111"/>
+        <location filename="../mxbootrepair.cpp" line="115"/>
         <source>Process finished. Errors have occurred.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="160"/>
+        <location filename="../mxbootrepair.cpp" line="187"/>
         <source>About MX Boot Repair</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="162"/>
+        <location filename="../mxbootrepair.cpp" line="189"/>
         <source>Simple boot repair program for antiX MX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="163"/>
+        <location filename="../mxbootrepair.cpp" line="190"/>
         <source>Copyright (c) antiX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="164"/>
+        <location filename="../mxbootrepair.cpp" line="191"/>
         <source>License</source>
         <translation type="unfinished"></translation>
     </message>
