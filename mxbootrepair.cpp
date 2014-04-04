@@ -58,14 +58,14 @@ void mxbootrepair::refresh() {
 
 
 void mxbootrepair::reinstallGRUB() {
-    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     ui->progressBar->show();
+    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonOk->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     QString text = QString("GRUB is being installed on %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    setCursor(QCursor(Qt::WaitCursor));
     setConnections(timer, proc);
     QString cmd = "grub-install /dev/" + location;
     proc->start(cmd);
@@ -73,10 +73,10 @@ void mxbootrepair::reinstallGRUB() {
 
 void mxbootrepair::repairGRUB() {
     ui->progressBar->show();
+    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonOk->setEnabled(false);
     ui->outputLabel->setText("The GRUB configuration file (grub.cfg) is being rebuild.");
-    setCursor(QCursor(Qt::WaitCursor));
     setConnections(timer, proc);
     proc->start("update-grub");
 }
