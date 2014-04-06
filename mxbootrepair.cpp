@@ -137,7 +137,7 @@ void mxbootrepair::addDevToCombo() {
     ui->grubBootCombo->clear();
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | sort\"";
+        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]' | sort\"";
     } else { // add partition
         cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
     }
