@@ -137,9 +137,9 @@ void mxbootrepair::addDevToCombo() {
     ui->grubBootCombo->clear();
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 11 | sort\"";
+        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | sort\"";
     } else { // add partition
-        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
+        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
     }
     proc->start(cmd);
     proc->waitForFinished();
@@ -185,7 +185,7 @@ void mxbootrepair::on_buttonOk_clicked() {
 void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
-                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140404</p><p align=\"center\"><h3>" +
+                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140405</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for antiX MX") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
