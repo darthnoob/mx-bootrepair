@@ -59,7 +59,7 @@
           <item row="3" column="0">
            <widget class="QRadioButton" name="bakRadioButton">
             <property name="text">
-             <string>Backup MBR or PBR</string>
+             <string>Backup MBR or PBR (legacy boot only)</string>
             </property>
            </widget>
           </item>
@@ -83,7 +83,7 @@
           <item row="4" column="0">
            <widget class="QRadioButton" name="restoreBakRadioButton">
             <property name="text">
-             <string>Restore MBR or PBR from backup</string>
+             <string>Restore MBR or PBR from backup (legacy boot only)</string>
             </property>
            </widget>
           </item>
