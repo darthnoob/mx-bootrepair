@@ -55,7 +55,7 @@ void mxbootrepair::refresh() {
     ui->outputBox->setPlainText("");
     ui->outputLabel->setText("");
     ui->buttonOk->setText("Ok");
-    ui->buttonOk->setIcon(QIcon("icons/dialog-ok.png"));
+    ui->buttonOk->setIcon(QIcon("/usr/share/mx-bootrepair/icons/dialog-ok.png"));
     ui->buttonOk->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
     addDevToCombo();
