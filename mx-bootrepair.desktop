@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=MX Boot Repair
+Name[de]=
+Name[es]=
+Name[fr]=
+Name[it]=
+Name[nl]=
+Name[sv]=
+NAme[el]=
+Name[ru]=
+Comment=Simple Boot Repair
+Comment[de]=
+Comment[es]=
+Comment[fr]=
+Comment[it]=
+Comment[nl]=
+Comment[sv]=
+Comment[el]=
+Comment[ru]=
+Comment[sv]=
+Exec=gksu mx-bootrepair
+Icon=mx-bootrepair
+NoDisplay=false
+Categories=System;
+Type=Application 

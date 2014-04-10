@@ -185,7 +185,7 @@ void mxbootrepair::on_buttonOk_clicked() {
 void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
-                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140405</p><p align=\"center\"><h3>" +
+                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140410</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for antiX MX") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
