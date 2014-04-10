@@ -98,7 +98,7 @@ void mxbootrepair::backupBR(QString filename) {
     QString text = QString("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
-    QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=512 count=1";
+    QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
     proc->start(cmd);
 }
 
@@ -118,7 +118,7 @@ void mxbootrepair::restoreBR(QString filename) {
     QString text = QString("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
-    QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=512 count=1";
+    QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     proc->start(cmd);
 }
 
