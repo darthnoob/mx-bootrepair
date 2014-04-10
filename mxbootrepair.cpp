@@ -26,6 +26,7 @@
 #include "ui_mxbootrepair.h"
 
 #include <QWebView>
+#include <QFileDialog>
 
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
@@ -47,12 +48,14 @@ void mxbootrepair::refresh() {
     proc->setReadChannel(QProcess::StandardOutput);
     proc->setReadChannelMode(QProcess::MergedChannels);
     ui->stackedWidget->setCurrentIndex(0);
+    ui->reinstallRadioButton->setFocus();
     ui->progressBar->hide();
     ui->progressBar->setValue(0);
     ui->outputBox->setPlainText("");
     ui->outputLabel->setText("");
     ui->buttonOk->setText("Ok");
     ui->buttonOk->setIcon(QIcon("icons/dialog-ok.png"));
+    addDevToCombo();
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
@@ -80,6 +83,36 @@ void mxbootrepair::repairGRUB() {
     setConnections(timer, proc);
     proc->start("update-grub");
 }
+
+
+void mxbootrepair::backupBR(QString filename) {
+    ui->progressBar->show();
+    setCursor(QCursor(Qt::WaitCursor));
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonOk->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    QString text = QString("Backing up MBR or PBR from %1 device.").arg(location);
+    ui->outputLabel->setText(text);
+    setConnections(timer, proc);
+    QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=512 count=1";
+    proc->start(cmd);
+}
+
+void mxbootrepair::restoreBR(QString filename) {
+    ui->progressBar->show();
+    setCursor(QCursor(Qt::WaitCursor));
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonOk->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    QString text = QString("Restoring MBR/PBR from backup to %1 device.").arg(location);
+    ui->outputLabel->setText(text);
+    setConnections(timer, proc);
+    QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=512 count=1";
+    proc->start(cmd);
+}
+
 
 //// sync process events ////
 
@@ -163,16 +196,52 @@ void mxbootrepair::on_grubRootButton_toggled() {
 
 // OK button clicked
 void mxbootrepair::on_buttonOk_clicked() {
+    // on first page
     if (ui->stackedWidget->currentIndex() == 0) {
+        // Reinstall button selected
         if (ui->reinstallRadioButton->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(ui->reinstallPage);
-            addDevToCombo();
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            ui->bootMethodGroup->setTitle("Select Boot Method");
+            ui->grubInsLabel->setText("Install on:");
+            ui->grubRootButton->setText("root");
+        // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->outputPage);
             repairGRUB();
+        // Backup button selected
+        } else if (ui->bakRadioButton->isChecked()) {
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            ui->bootMethodGroup->setTitle("Select Item to Back Up");
+            ui->grubInsLabel->setText("");
+            ui->grubRootButton->setText("PBR");
+        // Restore backup button selected
+        } else if (ui->restoreBakRadioButton->isChecked()) {
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            ui->bootMethodGroup->setTitle("Select Item to Restore");
+            ui->grubInsLabel->setText("");
+            ui->grubRootButton->setText("PBR");
+
         }
-    } else if (ui->stackedWidget->currentWidget() == ui->reinstallPage) {
-        reinstallGRUB();
+    // on selection page
+    } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
+        if (ui->reinstallRadioButton->isChecked()) {
+            reinstallGRUB();
+        } else if (ui->bakRadioButton->isChecked()) {
+            QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
+            if (filename == "") {
+                QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
+                return;
+            }
+            backupBR(filename);
+        } else if (ui->restoreBakRadioButton->isChecked()) {
+            QString filename = QFileDialog::getOpenFileName(this, tr("Select MBR or PBR backup file"));
+            if (filename == "") {
+                QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
+                return;
+            }
+            restoreBR(filename);
+        }
+    // on output page
     } else if (ui->stackedWidget->currentWidget() == ui->outputPage) {
         refresh();
     } else {

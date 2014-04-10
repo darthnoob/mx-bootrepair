@@ -28,7 +28,7 @@
        <item>
         <widget class="QLabel" name="infoLabel">
          <property name="text">
-          <string>MX Boot Repair is an utility that can be used to reinstall GRUB bootloader on the MBR or root partition. It also provides the option to reconstruct the GRUB configuration file.</string>
+          <string>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>
@@ -56,6 +56,13 @@
           <property name="spacing">
            <number>6</number>
           </property>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="bakRadioButton">
+            <property name="text">
+             <string>Backup MBR or PBR</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="0">
            <widget class="QRadioButton" name="reinstallRadioButton">
             <property name="text">
@@ -73,12 +80,19 @@
             </property>
            </widget>
           </item>
+          <item row="4" column="0">
+           <widget class="QRadioButton" name="restoreBakRadioButton">
+            <property name="text">
+             <string>Restore MBR or PBR from backup</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="reinstallPage">
+     <widget class="QWidget" name="selectionPage">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QGroupBox" name="bootMethodGroup">
@@ -141,6 +155,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>Root (Partition Boot Record)</string>
+            </property>
             <property name="text">
              <string>root</string>
             </property>
@@ -162,6 +179,9 @@
               <width>80</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Master Boot Record</string>
             </property>
             <property name="text">
              <string>MBR</string>

@@ -47,10 +47,13 @@ public:
 
     void refresh();
     void displaySite(QString site);
+    void addDevToCombo();
 
     void reinstallGRUB();
     void repairGRUB();
-    void addDevToCombo();
+    void backupBR(QString filename);
+    void restoreBR(QString filename);
+
 
 public slots:
     void procStart();
