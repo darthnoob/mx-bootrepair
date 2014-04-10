@@ -49,12 +49,15 @@ void mxbootrepair::refresh() {
     proc->setReadChannelMode(QProcess::MergedChannels);
     ui->stackedWidget->setCurrentIndex(0);
     ui->reinstallRadioButton->setFocus();
+    ui->reinstallRadioButton->setChecked(true);
     ui->progressBar->hide();
     ui->progressBar->setValue(0);
     ui->outputBox->setPlainText("");
     ui->outputLabel->setText("");
     ui->buttonOk->setText("Ok");
     ui->buttonOk->setIcon(QIcon("icons/dialog-ok.png"));
+    ui->buttonOk->setEnabled(true);
+    ui->buttonCancel->setEnabled(true);
     addDevToCombo();
     setCursor(QCursor(Qt::ArrowCursor));
 }
@@ -106,6 +109,12 @@ void mxbootrepair::restoreBR(QString filename) {
     ui->buttonOk->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    if (QMessageBox::warning(this, tr("Warning"),
+                              tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
+                                         QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Cancel){
+        refresh();
+        return;
+    }
     QString text = QString("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
