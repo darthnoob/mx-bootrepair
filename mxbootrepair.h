@@ -45,6 +45,7 @@ public:
     explicit mxbootrepair(QWidget *parent = 0);
     ~mxbootrepair();
 
+    QString getCmdOut(QString cmd);
     void refresh();
     void displaySite(QString site);
     void addDevToCombo();
