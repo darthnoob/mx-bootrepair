@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>508</width>
+    <width>513</width>
     <height>300</height>
    </rect>
   </property>
@@ -18,10 +18,6 @@
   </property>
   <property name="windowTitle">
    <string>MX Boot Repair</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>mx-bootrepair.png</normaloff>mx-bootrepair.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="3">
