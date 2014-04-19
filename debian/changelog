@@ -1,3 +1,9 @@
+mx-bootrepair (0.3mx140+2) mx; urgency=low
+
+  * update grub.cfg another partitions
+
+ -- Adrian <adrian@mx1>  Sat, 19 Apr 2014 11:26:16 -0400
+
 mx-bootrepair (0.2mx140+1) mx; urgency=low
 
   * added MBR/PBR save and restore options
