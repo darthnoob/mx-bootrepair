@@ -59,7 +59,7 @@ public:
 public slots:
     void procStart();
     void procTime();
-    void procDone(int exitCode, QProcess::ExitStatus exitStatus);
+    void procDone(int exitCode);
     void setConnections(QTimer* timer, QProcess* proc);
     void onStdoutAvailable();
 

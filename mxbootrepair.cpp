@@ -165,7 +165,7 @@ void mxbootrepair::procTime() {
     ui->progressBar->setValue(i);
 }
 
-void mxbootrepair::procDone(int exitCode, QProcess::ExitStatus exitStatus) {
+void mxbootrepair::procDone(int exitCode) {
     timer->stop();
     ui->progressBar->setValue(100);
     setCursor(QCursor(Qt::ArrowCursor));
@@ -194,8 +194,8 @@ void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
     connect(timer, SIGNAL(timeout()), this, SLOT(procTime()));
     disconnect(proc, SIGNAL(started()), 0, 0);
     connect(proc, SIGNAL(started()), this, SLOT(procStart()));
-    disconnect(proc, SIGNAL(finished(int, QProcess::ExitStatus)), 0, 0);
-    connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(procDone(int, QProcess::ExitStatus)));
+    disconnect(proc, SIGNAL(finished(int)), 0, 0);
+    connect(proc, SIGNAL(finished(int)), this, SLOT(procDone(int)));
     disconnect(proc, SIGNAL(readyReadStandardOutput()), 0, 0);
     connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onStdoutAvailable()));
 }
